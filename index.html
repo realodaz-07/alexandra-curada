@@ -20,6 +20,8 @@
     --gold:#E6B13E;
     --gold-soft:#F2C868;
     --gold-deep:#B4841C;
+    --green:#108B8D;
+    --green-soft:#159A9C;
     --teal:#3E9E8C;
     --teal-deep:#2B7A6C;
     --text:#E8EEF7;
@@ -60,7 +62,7 @@
 
   /* STICKY HEADER (reminder + nav) */
   .topwrap{position:sticky;top:0;z-index:60;}
-  .reminder{background:linear-gradient(90deg,var(--gold),var(--gold-soft));color:var(--navy);}
+  .reminder{background:var(--green);color:#fff;}
   .reminder .wrap{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:center;gap:3px 14px;text-align:center;padding:9px 20px;font-size:.8rem;font-weight:600;line-height:1.35;}
   .reminder .rline{display:flex;align-items:center;gap:6px;}
   .reminder .rline:not(:first-child)::before{content:"·";opacity:.5;font-weight:700;}
@@ -100,11 +102,11 @@
   .trust .txt b{color:var(--text);font-weight:600;}
 
   /* CRED STRIP */
-  .cred-strip{background:var(--navy-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .cred-strip{background:var(--green);border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);}
   .cred-strip .wrap{display:flex;align-items:center;justify-content:center;gap:14px 40px;flex-wrap:wrap;padding:26px 28px;}
-  .cred-strip .lbl{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);}
-  .cred-strip b{font-family:'Merriweather',serif;font-weight:900;font-size:1.05rem;color:var(--text);letter-spacing:.4px;}
-  .cred-strip b em{color:var(--gold);font-style:normal;}
+  .cred-strip .lbl{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.72);}
+  .cred-strip b{font-family:'Merriweather',serif;font-weight:900;font-size:1.05rem;color:#fff;letter-spacing:.4px;}
+  .cred-strip b em{color:var(--gold-soft);font-style:normal;}
 
   /* SECTION SHELL */
   section{padding:92px 0;}
@@ -163,7 +165,7 @@
   .det h4{color:var(--white);font-size:1.2rem;margin-bottom:6px;}
 
   /* CAREERS */
-  .careers{background:var(--navy);}
+  .careers{background:var(--navy-deep);border-top:1px solid var(--line-2);}
   .roles{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px;}
   .role{background:var(--card);border:1px solid var(--line);padding:14px 20px;border-radius:12px;font-size:.92rem;font-weight:600;color:var(--text);}
   .role b{font-family:'Merriweather',serif;font-weight:900;color:var(--gold);margin-right:8px;}
