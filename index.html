@@ -69,29 +69,20 @@
   .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
   .burger span{width:24px;height:2px;background:var(--white);border-radius:2px;}
 
-  /* HERO */
-  .hero{position:relative;overflow:hidden;background:var(--navy-deep);}
-  .hero::before{content:"";position:absolute;inset:0;
-    background:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-    opacity:.08;filter:grayscale(.3);}
-  .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(1200px 500px at 20% 0%,rgba(62,158,140,.14),transparent 60%);}
-  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;padding:80px 0 96px;}
+  /* HERO — full-bleed background image */
+  .hero{position:relative;overflow:hidden;background:var(--navy-deep) url('/assets/hero.jpg') 78% center/cover no-repeat;min-height:660px;display:flex;align-items:center;}
+  .hero::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg,var(--navy-deep) 0%,rgba(15,26,48,.94) 28%,rgba(15,26,48,.74) 50%,rgba(15,26,48,.28) 78%,rgba(15,26,48,.12) 100%);}
+  .hero-grid{position:relative;z-index:2;max-width:600px;padding:96px 0 100px;}
   .hero h1{font-size:clamp(2.7rem,6vw,4.6rem);text-transform:uppercase;letter-spacing:.5px;margin:20px 0 6px;}
   .hero h1 .serif-i{display:block;text-transform:none;font-size:.62em;margin-top:10px;letter-spacing:0;}
-  .hero p.lead{font-size:1.08rem;color:var(--muted);max-width:480px;margin:22px 0 34px;line-height:1.8;}
+  .hero p.lead{font-size:1.08rem;color:#C9D3E4;max-width:480px;margin:22px 0 22px;line-height:1.8;}
+  .date-pill{display:inline-flex;align-items:center;gap:9px;background:rgba(230,177,62,.12);border:1px solid rgba(230,177,62,.42);color:var(--gold);font-weight:700;font-size:.76rem;letter-spacing:.05em;padding:9px 16px;border-radius:30px;margin-bottom:26px;}
+  .date-pill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(230,177,62,.2);}
   .hero-actions{display:flex;gap:15px;flex-wrap:wrap;margin-bottom:30px;}
   .trust{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
-  .trust .txt{font-size:.86rem;color:var(--muted);max-width:320px;}
+  .trust .txt{font-size:.86rem;color:var(--muted);max-width:340px;}
   .trust .txt b{color:var(--text);font-weight:600;}
-  .hero-photo{position:relative;}
-  .hero-photo .frame{aspect-ratio:4/5;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line-2);}
-  .hero-photo .frame img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block;}
-  .hero-photo .ribbon{
-    position:absolute;left:-16px;bottom:28px;background:var(--gold);color:var(--navy);
-    padding:14px 22px;border-radius:12px;box-shadow:var(--shadow);
-  }
-  .hero-photo .ribbon b{display:block;font-family:'Merriweather',serif;font-weight:900;font-size:1rem;}
-  .hero-photo .ribbon small{font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;opacity:.82;}
 
   /* CRED STRIP */
   .cred-strip{background:var(--navy-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
@@ -200,8 +191,10 @@
     .nav-links{display:none;}
     .burger{display:flex;}
     .nav-links.open{display:flex;position:absolute;top:74px;left:0;right:0;flex-direction:column;background:var(--navy-deep);padding:24px 28px;gap:18px;border-bottom:1px solid var(--line);}
-    .hero-photo,.coach-photo{max-width:380px;margin:0 auto;}
-    .hero-photo{order:-1;}
+    .coach-photo{max-width:380px;margin:0 auto;}
+    .hero{background-position:72% center;}
+    .hero::after{background:linear-gradient(180deg,rgba(15,26,48,.72) 0%,rgba(15,26,48,.86) 60%,var(--navy-deep) 100%);}
+    .hero-grid{max-width:100%;padding:72px 0 80px;}
   }
 </style>
 </head>
@@ -224,11 +217,12 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div class="reveal in">
+  <div class="wrap">
+    <div class="hero-grid reveal in">
       <span class="eyebrow">Xero Training &amp; Certification</span>
       <h1>Learn.<br>Practice.<br>Get&nbsp;Certified.<span class="serif-i">All in one live session.</span></h1>
       <p class="lead">Helping Filipino accounting &amp; VA professionals master Xero, earn an official L1 certification, and land ANZ-facing roles with confidence.</p>
+      <span class="date-pill">15 Aug 2026 · Live Online Workshop</span>
       <div class="hero-actions">
         <a href="#pricing" class="btn btn-gold">Reserve Your Seat</a>
         <a href="#pricing" class="btn btn-outline">Free Intro Session</a>
@@ -237,10 +231,6 @@
         <span class="stars">★★★★★</span>
         <span class="txt">Trusted by Filipino <b>accounting &amp; VA professionals</b> serving ANZ clients.</span>
       </div>
-    </div>
-    <div class="hero-photo reveal in">
-      <div class="frame"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Alexandra Sansan Curada — Accountant &amp; Corporate Trainer" loading="eager" /></div>
-      <div class="ribbon"><b>15 Aug 2026</b><small>Live Online Workshop</small></div>
     </div>
   </div>
 </section>
