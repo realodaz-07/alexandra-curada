@@ -61,11 +61,10 @@
   /* STICKY HEADER (reminder + nav) */
   .topwrap{position:sticky;top:0;z-index:60;}
   .reminder{background:linear-gradient(90deg,var(--gold),var(--gold-soft));color:var(--navy);}
-  .reminder .wrap{display:flex;align-items:center;justify-content:center;gap:7px 15px;flex-wrap:wrap;padding:9px 28px;font-size:.8rem;font-weight:600;}
-  .reminder .pin{font-size:.95rem;}
+  .reminder .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;padding:8px 20px;font-size:.78rem;font-weight:600;line-height:1.35;}
+  .reminder .pin{margin-right:5px;}
   .reminder b{font-weight:800;}
-  .reminder .sep{opacity:.45;}
-  .reminder a{font-weight:800;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;}
+  .reminder a{font-weight:800;text-decoration:underline;text-underline-offset:3px;}
   .reminder a:hover{opacity:.75;}
 
   /* NAV */
@@ -82,12 +81,13 @@
   .burger span{width:24px;height:2px;background:var(--white);border-radius:2px;}
 
   /* HERO — full-bleed background image */
-  .hero{position:relative;overflow:hidden;background:var(--navy-deep) url('/assets/hero.jpg') right center/cover no-repeat;min-height:720px;display:flex;align-items:center;}
+  .hero{position:relative;overflow:hidden;background:var(--navy-deep) url('/assets/hero.jpg') right center/cover no-repeat;min-height:calc(100vh - 155px);display:flex;align-items:center;}
   .hero::after{content:"";position:absolute;inset:0;
     background:linear-gradient(90deg,var(--navy-deep) 0%,rgba(15,26,48,.90) 24%,rgba(15,26,48,.52) 45%,rgba(15,26,48,.10) 66%,rgba(15,26,48,0) 88%);}
   .hero>.wrap{width:100%;}
-  .hero-grid{position:relative;z-index:2;max-width:560px;padding:104px 0 108px;text-align:left;}
-  .hero h1{font-size:clamp(2.7rem,6vw,4.6rem);text-transform:uppercase;letter-spacing:.5px;margin:20px 0 6px;}
+  .hero-avatar{display:none;}
+  .hero-grid{position:relative;z-index:2;max-width:560px;padding:44px 0;text-align:left;}
+  .hero h1{font-size:clamp(2.3rem,5vw,3.9rem);text-transform:uppercase;letter-spacing:.5px;margin:18px 0 4px;}
   .hero h1 .serif-i{display:block;text-transform:none;font-size:.62em;margin-top:10px;letter-spacing:0;}
   .hero p.lead{font-size:1.08rem;color:#C9D3E4;max-width:480px;margin:22px 0 22px;line-height:1.8;}
   .date-pill{display:inline-flex;align-items:center;gap:9px;background:rgba(230,177,62,.12);border:1px solid rgba(230,177,62,.42);color:var(--gold);font-weight:700;font-size:.76rem;letter-spacing:.05em;padding:9px 16px;border-radius:30px;margin-bottom:26px;}
@@ -208,9 +208,14 @@
     .burger{display:flex;}
     .nav-links.open{display:flex;position:absolute;top:74px;left:0;right:0;flex-direction:column;background:var(--navy-deep);padding:24px 28px;gap:18px;border-bottom:1px solid var(--line);}
     .coach-photo{max-width:380px;margin:0 auto;}
-    .hero{background-position:72% center;}
-    .hero::after{background:linear-gradient(180deg,rgba(15,26,48,.72) 0%,rgba(15,26,48,.86) 60%,var(--navy-deep) 100%);}
-    .hero-grid{max-width:100%;padding:72px 0 80px;}
+    .hero{min-height:auto;background-position:72% center;}
+    .hero::after{background:linear-gradient(180deg,rgba(15,26,48,.80) 0%,rgba(15,26,48,.90) 55%,var(--navy-deep) 100%);}
+    .hero-grid{max-width:100%;padding:52px 0 64px;text-align:center;}
+    .hero-avatar{display:block;width:132px;height:132px;border-radius:50%;overflow:hidden;border:3px solid var(--gold);margin:0 auto 22px;box-shadow:0 18px 40px -18px rgba(0,0,0,.7);}
+    .hero-avatar img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block;}
+    .hero .date-pill{margin-left:auto;margin-right:auto;}
+    .hero-actions{justify-content:center;}
+    .trust{justify-content:center;text-align:center;}
   }
 </style>
 </head>
@@ -220,13 +225,9 @@
 <div class="topwrap">
   <div class="reminder">
     <div class="wrap">
-      <span class="pin">📌</span>
-      <span><b>Reminder:</b> Xero Training Series</span>
-      <span class="sep">·</span>
-      <span>Sat 15 Aug 2026 · 1–6 PM PH</span>
-      <span class="sep">·</span>
-      <span>Live on Zoom</span>
-      <a href="#pricing">Register →</a>
+      <div class="rline"><span class="pin">📌</span><b>Reminder:</b> Xero Training Series</div>
+      <div class="rline">Sat 15 Aug 2026 · 1–6 PM PH · Live on Zoom</div>
+      <div class="rline"><a href="#pricing">Register →</a></div>
     </div>
   </div>
   <header class="nav">
@@ -248,6 +249,7 @@
 <section class="hero">
   <div class="wrap">
     <div class="hero-grid reveal in">
+      <div class="hero-avatar"><img src="/assets/coach.jpg" alt="Alexandra Sansan Curada" /></div>
       <span class="eyebrow">Xero Training &amp; Certification</span>
       <h1>Learn.<br>Practice.<br>Get&nbsp;Certified.<span class="serif-i">All in one live session.</span></h1>
       <p class="lead">Helping Filipino accounting &amp; VA professionals master Xero, earn an official L1 certification, and land ANZ-facing roles with confidence.</p>
