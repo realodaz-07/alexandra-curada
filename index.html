@@ -19,6 +19,7 @@
     --line-2:rgba(255,255,255,.18);
     --gold:#E6B13E;
     --gold-soft:#F2C868;
+    --gold-deep:#B4841C;
     --teal:#3E9E8C;
     --teal-deep:#2B7A6C;
     --text:#E8EEF7;
@@ -57,23 +58,35 @@
 
   .stars{color:var(--gold);letter-spacing:2px;font-size:1rem;}
 
+  /* STICKY HEADER (reminder + nav) */
+  .topwrap{position:sticky;top:0;z-index:60;}
+  .reminder{background:linear-gradient(90deg,var(--gold),var(--gold-soft));color:var(--navy);}
+  .reminder .wrap{display:flex;align-items:center;justify-content:center;gap:7px 15px;flex-wrap:wrap;padding:9px 28px;font-size:.8rem;font-weight:600;}
+  .reminder .pin{font-size:.95rem;}
+  .reminder b{font-weight:800;}
+  .reminder .sep{opacity:.45;}
+  .reminder a{font-weight:800;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;}
+  .reminder a:hover{opacity:.75;}
+
   /* NAV */
-  header.nav{position:sticky;top:0;z-index:50;background:rgba(15,26,48,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+  header.nav{position:relative;z-index:50;background:rgba(15,26,48,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px;}
   .logo{font-family:'Merriweather',serif;font-size:1.4rem;font-weight:900;letter-spacing:.3px;color:var(--white);}
   .logo span{color:var(--gold);}
   .nav-links{display:flex;gap:34px;align-items:center;}
   .nav-links a{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--muted);transition:.2s;}
   .nav-links a:hover{color:var(--white);}
-  .nav-cta{padding:11px 24px;font-size:.76rem;color:var(--navy);}
+  .nav-links a.nav-cta{padding:11px 24px;font-size:.76rem;color:var(--navy);}
+  .nav-links a.nav-cta:hover{color:var(--navy);}
   .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
   .burger span{width:24px;height:2px;background:var(--white);border-radius:2px;}
 
   /* HERO — full-bleed background image */
-  .hero{position:relative;overflow:hidden;background:var(--navy-deep) url('/assets/hero.jpg') 78% center/cover no-repeat;min-height:660px;display:flex;align-items:center;}
+  .hero{position:relative;overflow:hidden;background:var(--navy-deep) url('/assets/hero.jpg') right center/cover no-repeat;min-height:720px;display:flex;align-items:center;}
   .hero::after{content:"";position:absolute;inset:0;
-    background:linear-gradient(90deg,var(--navy-deep) 0%,rgba(15,26,48,.94) 28%,rgba(15,26,48,.74) 50%,rgba(15,26,48,.28) 78%,rgba(15,26,48,.12) 100%);}
-  .hero-grid{position:relative;z-index:2;max-width:600px;padding:96px 0 100px;}
+    background:linear-gradient(90deg,var(--navy-deep) 0%,rgba(15,26,48,.90) 24%,rgba(15,26,48,.52) 45%,rgba(15,26,48,.10) 66%,rgba(15,26,48,0) 88%);}
+  .hero>.wrap{width:100%;}
+  .hero-grid{position:relative;z-index:2;max-width:560px;padding:104px 0 108px;text-align:left;}
   .hero h1{font-size:clamp(2.7rem,6vw,4.6rem);text-transform:uppercase;letter-spacing:.5px;margin:20px 0 6px;}
   .hero h1 .serif-i{display:block;text-transform:none;font-size:.62em;margin-top:10px;letter-spacing:0;}
   .hero p.lead{font-size:1.08rem;color:#C9D3E4;max-width:480px;margin:22px 0 22px;line-height:1.8;}
@@ -101,21 +114,24 @@
   .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
   .feat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;transition:.28s;}
   .feat:hover{transform:translateY(-5px);border-color:rgba(230,177,62,.5);background:var(--card-2);}
-  .feat .ico{width:50px;height:50px;border-radius:12px;background:rgba(230,177,62,.14);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:18px;}
+  .feat .ico{width:50px;height:50px;border-radius:12px;background:rgba(230,177,62,.14);color:var(--gold);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+  .feat .ico svg{width:24px;height:24px;fill:currentColor;display:block;}
   .feat h3{font-size:1.18rem;margin-bottom:8px;color:var(--white);}
   .feat p{color:var(--muted);font-size:.93rem;}
 
-  /* COACH BAND */
-  .coach{background:var(--navy-2);}
+  /* COACH BAND — light / white */
+  .coach{background:var(--white);}
   .coach-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;}
-  .coach-photo{border-radius:20px;overflow:hidden;border:1px solid var(--line-2);box-shadow:var(--shadow);aspect-ratio:4/5;}
-  .coach-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block;}
-  .coach h2{font-size:clamp(1.9rem,3.4vw,2.7rem);margin:14px 0 16px;}
-  .coach p{color:var(--muted);margin-bottom:14px;}
+  .coach-photo{border-radius:20px;overflow:hidden;border:1px solid #E3E9F2;box-shadow:0 30px 60px -30px rgba(22,35,63,.35);aspect-ratio:4/5;}
+  .coach-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block;}
+  .coach .eyebrow{color:var(--gold-deep);}
+  .coach h2{color:var(--navy);font-size:clamp(1.9rem,3.4vw,2.7rem);margin:14px 0 16px;}
+  .coach .serif-i{color:var(--gold-deep);}
+  .coach p{color:#54617A;margin-bottom:14px;}
   .stat-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
-  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 22px;flex:1;min-width:130px;}
-  .stat b{font-family:'Merriweather',serif;font-weight:900;font-size:1.8rem;color:var(--gold);display:block;line-height:1;}
-  .stat small{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;}
+  .stat{background:#F3F6FB;border:1px solid #E3E9F2;border-radius:12px;padding:16px 22px;flex:1;min-width:130px;}
+  .stat b{font-family:'Merriweather',serif;font-weight:900;font-size:1.8rem;color:var(--gold-deep);display:block;line-height:1;}
+  .stat small{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#54617A;font-weight:600;}
 
   /* PRICING */
   .pricing{background:var(--navy);}
@@ -200,20 +216,33 @@
 </head>
 <body>
 
-<!-- NAV -->
-<header class="nav">
-  <div class="wrap nav-inner">
-    <div class="logo">Alexandra<span>.</span></div>
-    <nav class="nav-links" id="navlinks">
-      <a href="#features">Training</a>
-      <a href="#coach">Coach</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#careers">Careers</a>
-      <a href="#pricing" class="btn btn-gold nav-cta">Register</a>
-    </nav>
-    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+<!-- STICKY HEADER: pinned reminder + nav -->
+<div class="topwrap">
+  <div class="reminder">
+    <div class="wrap">
+      <span class="pin">📌</span>
+      <span><b>Reminder:</b> Xero Training Series</span>
+      <span class="sep">·</span>
+      <span>Sat 15 Aug 2026 · 1–6 PM PH</span>
+      <span class="sep">·</span>
+      <span>Live on Zoom</span>
+      <a href="#pricing">Register →</a>
+    </div>
   </div>
-</header>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <div class="logo">Alexandra<span>.</span></div>
+      <nav class="nav-links" id="navlinks">
+        <a href="#features">Training</a>
+        <a href="#coach">Coach</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#careers">Careers</a>
+        <a href="#pricing" class="btn btn-gold nav-cta">Register</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -257,32 +286,32 @@
     </div>
     <div class="feat-grid">
       <div class="feat reveal">
-        <div class="ico">📊</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 13h4v8H3zM10 3h4v18h-4zM17 9h4v12h-4z"/></svg></div>
         <h3>Xero Practical Training</h3>
         <p>Real-world scenarios and workflow mastery you can apply on day one with real clients.</p>
       </div>
       <div class="feat reveal">
-        <div class="ico">🎓</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm-3.2 10.4L7 22l5-2.4L17 22l-1.8-9.6a7 7 0 0 1-6.4 0z"/></svg></div>
         <h3>L1 Associate Certification</h3>
         <p>Official training to help you prepare, sit, and get certified — recognised by ANZ employers.</p>
       </div>
       <div class="feat reveal">
-        <div class="ico">🧭</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.5 5.5-2.6 5.9-5.9 2.6 2.6-5.9 5.9-2.6zM12 10.8a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg></div>
         <h3>Guided Navigation</h3>
         <p>A live, step-by-step Xero demonstration — follow along, not just watch.</p>
       </div>
       <div class="feat reveal">
-        <div class="ico">🧩</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5zM4 11.2 2 12l10 5 10-5-2-.8-8 4-8-4zM4 15.7 2 16.5l10 5 10-5-2-.8-8 4-8-4z"/></svg></div>
         <h3>Real-World Scenarios</h3>
         <p>Practice the way the job actually demands, from setup to reconciliation.</p>
       </div>
       <div class="feat reveal">
-        <div class="ico">📁</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zM8 13h8v1.6H8zm0 3.4h8V18H8z"/></svg></div>
         <h3>Training Materials</h3>
         <p>Keep the resources and your Xero certificate — proof of skills that lasts.</p>
       </div>
       <div class="feat reveal">
-        <div class="ico">💼</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M9.5 4a2 2 0 0 0-2 2v1H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.5V6a2 2 0 0 0-2-2h-5zm0 1.8h5V7h-5V5.8z"/></svg></div>
         <h3>Career Guidance</h3>
         <p>Connecting accountants, bookkeepers, auditors &amp; EAs with their next big role.</p>
       </div>
@@ -294,7 +323,7 @@
 <section id="coach" class="coach">
   <div class="wrap coach-grid">
     <div class="coach-photo reveal">
-      <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Alexandra Sansan Curada" loading="lazy" />
+      <img src="/assets/coach.jpg" alt="Alexandra Sansan Curada — Accountant &amp; Corporate Trainer" loading="lazy" />
     </div>
     <div class="reveal">
       <span class="eyebrow">Meet Your Coach</span>
@@ -349,33 +378,6 @@
           <li>Sat, 15 Aug 2026 · 1–6 PM PH</li>
         </ul>
         <div class="foot"><a href="https://forms.gle/bSRkx" target="_blank" rel="noopener" class="btn btn-gold btn-full">Register Now</a></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SESSION DETAILS -->
-<section class="details">
-  <div class="wrap">
-    <div class="sec-head reveal" style="margin-bottom:38px;">
-      <span class="eyebrow">Session Details</span>
-      <h2>Save the date.</h2>
-    </div>
-    <div class="details-card reveal">
-      <div class="det">
-        <div class="k">When</div>
-        <h4>Sat, 15 Aug 2026</h4>
-        <div class="v">1:00 – 6:00 PM (Philippine Time)</div>
-      </div>
-      <div class="det">
-        <div class="k">Where</div>
-        <h4>Online via Zoom</h4>
-        <div class="v">Link sent to successful registrants</div>
-      </div>
-      <div class="det">
-        <div class="k">You'll walk away with</div>
-        <h4>Certificate &amp; Skills</h4>
-        <div class="v">Xero certificate, training material &amp; hands-on Xero experience</div>
       </div>
     </div>
   </div>
