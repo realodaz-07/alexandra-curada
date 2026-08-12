@@ -55,6 +55,8 @@
   .btn-gold:hover{background:#d9a52f;transform:translateY(-2px);}
   .btn-ghost{background:transparent;color:var(--navy);border:1.6px solid var(--teal);}
   .btn-ghost:hover{background:var(--teal);color:var(--white);}
+  .btn-outline{background:transparent;color:#fff;border:1.6px solid rgba(255,255,255,.55);}
+  .btn-outline:hover{background:#fff;color:var(--navy);border-color:#fff;}
 
   /* NAV */
   header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
@@ -68,33 +70,32 @@
   .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
   .burger span{width:24px;height:2px;background:var(--navy);border-radius:2px;}
 
-  /* HERO */
-  .hero{position:relative;overflow:hidden;background:var(--white);}
-  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:70px 0 90px;}
-  .hero h1{font-size:clamp(2.6rem,5.6vw,4.4rem);margin:18px 0 22px;text-transform:uppercase;letter-spacing:.5px;}
-  .hero p.lead{font-size:1.08rem;color:var(--muted);max-width:450px;margin-bottom:34px;}
+  /* HERO — dark, photo, subtle background image */
+  .hero{position:relative;overflow:hidden;background:var(--navy-deep);color:#fff;}
+  .hero::before{content:"";position:absolute;inset:0;
+    background:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    opacity:.11;filter:grayscale(.2);}
+  .hero::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(115deg,var(--navy-deep) 0%,rgba(16,23,44,.90) 48%,rgba(16,23,44,.55) 100%);}
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .9fr;gap:60px;align-items:center;padding:92px 0 100px;}
+  .hero h1{color:#fff;font-size:clamp(2.6rem,5.6vw,4.4rem);margin:20px 0 24px;text-transform:uppercase;letter-spacing:.5px;}
+  .hero .serif-i{color:var(--gold);}
+  .hero p.lead{font-size:1.1rem;color:#C9D3E4;max-width:470px;margin-bottom:38px;line-height:1.75;}
   .hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero .creds{margin-top:30px;}
+  .hero .chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.20);color:#fff;}
   .hero-photo{position:relative;}
   .hero-photo .frame{
-    aspect-ratio:4/5;border-radius:16px;overflow:hidden;
-    background:linear-gradient(160deg,var(--navy),var(--teal));box-shadow:var(--shadow);
-    display:flex;align-items:flex-end;justify-content:center;position:relative;
+    aspect-ratio:4/5;border-radius:16px;overflow:hidden;box-shadow:0 30px 70px -30px rgba(0,0,0,.65);
+    border:1px solid rgba(255,255,255,.14);
   }
-  .hero-photo .frame::before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:var(--gold);opacity:.35;top:-50px;right:-40px;}
-  .hero-photo .frame .initials{
-    font-family:'Merriweather',serif;font-weight:900;font-size:8rem;color:rgba(255,255,255,.92);
-    line-height:1;padding-bottom:10%;letter-spacing:2px;position:relative;z-index:1;
+  .hero-photo .frame img{width:100%;height:100%;object-fit:cover;object-position:50% 15%;display:block;}
+  .hero-photo .tag{
+    position:absolute;left:-16px;bottom:26px;background:var(--gold);color:var(--navy);
+    padding:13px 22px;border-radius:12px;box-shadow:var(--shadow);
   }
-  .badge-seal{
-    position:absolute;left:-26px;bottom:54px;width:128px;height:128px;border-radius:50%;
-    background:var(--white);border:3px solid var(--gold);box-shadow:var(--shadow);
-    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
-  }
-  .badge-seal .m{font-family:'Merriweather',serif;font-weight:900;font-size:1.7rem;color:var(--teal);}
-  .badge-seal small{font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:2px;}
-  .blob{position:absolute;border-radius:50%;z-index:0;}
-  .blob.a{width:220px;height:220px;background:var(--gold);opacity:.12;top:-60px;right:-40px;}
-  .blob.b{width:120px;height:120px;background:var(--teal);opacity:.08;top:44%;right:46%;}
+  .hero-photo .tag b{display:block;font-family:'Merriweather',serif;font-weight:900;font-size:.95rem;}
+  .hero-photo .tag small{font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;opacity:.82;}
 
   .creds{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;}
   .chip{
@@ -137,7 +138,6 @@
     background:var(--navy);color:var(--white);border-radius:24px;overflow:hidden;
     display:grid;grid-template-columns:1.1fr .9fr;box-shadow:var(--shadow);position:relative;
   }
-  .training-card::before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:var(--teal);opacity:.25;top:-120px;left:38%;}
   .training-info{padding:52px 50px;position:relative;z-index:1;}
   .training-info .eyebrow{color:var(--gold);}
   .training-info h2{color:var(--white);font-size:clamp(1.8rem,3.2vw,2.6rem);margin:14px 0 8px;}
@@ -175,9 +175,7 @@
   .quote-sec cite{font-style:normal;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;}
 
   /* CTA */
-  .cta{background:linear-gradient(160deg,var(--navy),var(--navy-deep));color:var(--white);border-radius:28px;text-align:center;padding:72px 40px;box-shadow:var(--shadow);position:relative;overflow:hidden;}
-  .cta::before{content:"";position:absolute;width:280px;height:280px;border-radius:50%;background:var(--gold);opacity:.14;top:-140px;right:-60px;}
-  .cta::after{content:"";position:absolute;width:200px;height:200px;border-radius:50%;background:var(--teal);opacity:.3;bottom:-110px;left:-50px;}
+  .cta{background:linear-gradient(160deg,var(--navy),var(--navy-deep));color:var(--white);border-radius:28px;text-align:center;padding:72px 40px;box-shadow:var(--shadow);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.06);}
   .cta h2{color:var(--white);font-size:clamp(2rem,4vw,3.1rem);margin-bottom:16px;position:relative;z-index:1;}
   .cta p{color:#D7DEEA;max-width:520px;margin:0 auto 32px;position:relative;z-index:1;}
   .cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;}
@@ -225,15 +223,14 @@
 
 <!-- HERO -->
 <section class="hero">
-  <span class="blob a"></span><span class="blob b"></span>
   <div class="wrap hero-grid">
     <div class="reveal in">
       <span class="eyebrow">Accountant &amp; Corporate Trainer</span>
       <h1>Xero Skills.<br><span class="serif-i">Real</span> Careers.</h1>
       <p class="lead">Helping Filipino accounting &amp; VA professionals master Xero, get certified, and land ANZ-facing roles with confidence.</p>
       <div class="hero-actions">
-        <a href="#training" class="btn btn-primary">Join a Training</a>
-        <a href="#about" class="btn btn-ghost">Meet Alexandra</a>
+        <a href="#training" class="btn btn-gold">Join a Training</a>
+        <a href="#about" class="btn btn-outline">Meet Alexandra</a>
       </div>
       <div class="creds">
         <span class="chip">PH CPA</span>
@@ -242,11 +239,8 @@
       </div>
     </div>
     <div class="hero-photo reveal in">
-      <div class="frame"><div class="initials">AC</div></div>
-      <div class="badge-seal">
-        <span class="m">Xero</span>
-        <small>Certified Coach</small>
-      </div>
+      <div class="frame"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Alexandra Sansan Curada — Accountant &amp; Corporate Trainer" loading="eager" /></div>
+      <div class="tag"><b>Xero Certified Coach</b><small>PH CPA · US CMA · CTT</small></div>
     </div>
   </div>
 </section>
